@@ -2,7 +2,7 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-var cheerio = requre("cheerio");
+var cheerio = require("cheerio");
 var db = require("./models");
 var PORT = 3000;
 

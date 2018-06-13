@@ -1,1 +1,5 @@
 /* add css */
+#home-body {
+    background: url("../img/news.jpg") no-repeat;
+    background-size: 1024px 2024px;
+}
