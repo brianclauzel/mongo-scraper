@@ -27,9 +27,12 @@ app.set('view engine', 'handlebars');
 
 app.get("/", function(req, res) {
     // res.render('home');
-    request("https://www.cnn.com/", function(error, response, body) {
+    request("https://www.newyorktimes.com/", function(error, response, body) {
         // console.log(response);
-        // console.log(body);
+        // if (!error || response.statusCode == 200) {
+        //     console.log(body);
+        // }
+        
     // if (error) {
     //     console.log(error);
     // }
@@ -38,17 +41,24 @@ app.get("/", function(req, res) {
         
 
         $("article h2").each(function(i, element) {
-            console.log(i);
-            console.log(element);
+            // console.log(i);
+            // console.log(element);
             var result = {};
 
             result.title = $(this)
             .children("a")
             .text();
+
+            result.summary = $(this)
+            .siblings("ul")
+            .children("li")
+            .text();
+
             result.link = $(this)
             .children("a")
             .attr("href");
             console.log(result.title);
+            console.log(result.summary);
             console.log(result.link);
         });
         // console.log(result);
