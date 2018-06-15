@@ -7,6 +7,8 @@ var request = require("request");
 var db = require("./models");
 var PORT = 3000;
 
+var results = [];
+
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -15,34 +17,23 @@ app.use(express.static("public"));
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadLines";
 
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
+// mongoose.Promise = Promise;
+
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-// app.get('/', function(req, res) {
-    
-// });
+mongoose.connect(MONGODB_URI);
 
 app.get("/", function(req, res) {
     // res.render('home');
     request("https://www.newyorktimes.com/", function(error, response, body) {
-        // console.log(response);
-        // if (!error || response.statusCode == 200) {
-        //     console.log(body);
-        // }
-        
-    // if (error) {
-    //     console.log(error);
-    // }
-        
+
+
         var $ = cheerio.load(body);
-        
 
         $("article h2").each(function(i, element) {
-            // console.log(i);
-            // console.log(element);
+            
             var result = {};
 
             result.title = $(this)
@@ -50,20 +41,24 @@ app.get("/", function(req, res) {
             .text();
 
             result.summary = $(this)
-            .siblings("ul")
-            .children("li")
+            .children("a div ul li")
             .text();
 
             result.link = $(this)
             .children("a")
             .attr("href");
-            console.log(result.title);
-            console.log(result.summary);
-            console.log(result.link);
+            console.log(result.summary)
+
+            results.push(result);
+
+            
         });
-        // console.log(result);
+            db.Article.collection.insert(results).then(function(dbArticle){
+                console.log(dbArticle);
+            }).catch(function(err) {
+                return res.json(err);
+            });
     });
-    
 });
 
 // app listening on port 300
