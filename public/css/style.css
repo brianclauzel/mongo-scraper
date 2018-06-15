@@ -5,3 +5,8 @@
     width: 100%;
     overflow: hidden;
 }
+
+#scrape {
+    height: 20px;
+    width: 40px;
+}

@@ -26,7 +26,7 @@ app.set('view engine', 'handlebars');
 mongoose.connect(MONGODB_URI);
 
 app.get("/", function(req, res) {
-    // res.render('home');
+   res.render("home");
     request("https://www.newyorktimes.com/", function(error, response, body) {
 
 
@@ -37,29 +37,41 @@ app.get("/", function(req, res) {
             var result = {};
 
             result.title = $(this)
-            .children("a")
+            .siblings("a")
             .text();
 
             result.summary = $(this)
-            .children("a div ul li")
+            .siblings("p.summary")
             .text();
 
             result.link = $(this)
             .children("a")
             .attr("href");
-            console.log(result.summary)
+            console.log(result);
 
             results.push(result);
 
             
         });
             db.Article.collection.insert(results).then(function(dbArticle){
-                console.log(dbArticle);
+                // console.log(dbArticle);
             }).catch(function(err) {
                 return res.json(err);
             });
+        res.send("Scrape complete");
     });
 });
+
+app.get("/articles", function(req, res) {
+
+    db.Article.find({})
+      .then(function(dbArticle) {
+        res.json(dbArticle);
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+  });
 
 // app listening on port 300
 app.listen(PORT, function(){
