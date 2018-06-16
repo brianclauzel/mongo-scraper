@@ -1,0 +1,14 @@
+<section class="row justify-content-center">
+ 
+
+  <h1>Articles</h1>
+
+  <h2>Scraping complete</h2>
+
+  <ul id="article">
+    {{#each news}}
+    <li class="thing" data-bind="click: clicky" data-id={{this._id}} data-title={{this.title}} >Title:<span class="titleSpan">{{this.title}}</span>Summary: <span class="summarySpan">{{this.summary}}</span>Link: <span class="linkSpan">{{this.link}}</span></li>
+    {{/each}}
+  </ul>
+  
+</section>

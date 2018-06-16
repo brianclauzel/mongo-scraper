@@ -7,6 +7,45 @@
 }
 
 #scrape {
-    height: 20px;
-    width: 40px;
+}
+
+#article {
+    height: 500px;
+    width: 300px;
+    overflow: scroll;
+}
+
+#notes {
+    clear: both;
+    height: 200px;
+    width: 100px;
+    margin-left: 70px;
+
+    /* right: 20px; */
+}
+
+#titleinput{
+    margin-left: auto;
+    margin-right: auto;
+    margin-right: 30px;
+}
+
+#bodyinput{
+    margin-left: auto;
+    margin-right: auto;
+    margin-right: 30px;
+}
+
+#savenote{
+    margin-left: auto;
+    margin-right: auto;
+    margin-right: 30px;
+}
+
+.h2 {
+    font-size: 10px;
+}
+
+.row {
+    float: left;
 }
