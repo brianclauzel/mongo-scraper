@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadLines";
 
-// mongoose.Promise = Promise;
+mongoose.Promise = Promise;
 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
