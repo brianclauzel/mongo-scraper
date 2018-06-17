@@ -10,7 +10,10 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Articles</a>
+        <a class="nav-link articles" href="#">Articles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link saved" href="#">Saved</a>
       </li>
       {{!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,9 +33,22 @@
   </div>
 </nav>
 
+<div class="jumbotron m-5">
+  <div class="container">
+    <h1 class="display-4 mx-auto d-flex justify-content-center">News Scraper</h1>
+    <p class="lead d-flex justify-content-center">Scrape N.Y.T. save, and comment on articles.</p>
+  </div>
+</div>
+
 
  <button id="scrape"> Scrape Articles </button>
  <div id="notes"></div>
+ <div id="articless">
+   <ul id="articles">
+     
+   </ul>
+ </div>
+ 
 
 
 

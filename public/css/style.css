@@ -1,51 +1,63 @@
 /* add css */
 #home-body {
+    background-color: rgb(91, 136, 136)
+    /* overflow: hidden; */
+}
+
+.jumbotron {
     background: url("../img/news.jpg") no-repeat;
-    background-size: cover;
-    width: 100%;
-    overflow: hidden;
+    background-size: 500px 600px;
+    background-position: 50%;
+    color: white;
+    
 }
 
 #scrape {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    margin-top: 25px;
 }
 
-#article {
-    height: 500px;
-    width: 300px;
+#articless {
+    text-align: center;
+    height: 700px;
+    width: 900px;
     overflow: scroll;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #notes {
-    clear: both;
     height: 200px;
     width: 100px;
-    margin-left: 70px;
-
+    margin-left: 40px;
+    /* font-size: 5px; */
     /* right: 20px; */
 }
 
 #titleinput{
     margin-left: auto;
     margin-right: auto;
-    margin-right: 30px;
+    
 }
 
 #bodyinput{
     margin-left: auto;
     margin-right: auto;
-    margin-right: 30px;
+    margin-top: 10px;
 }
 
 #savenote{
     margin-left: auto;
     margin-right: auto;
-    margin-right: 30px;
+    
 }
 
 .h2 {
-    font-size: 10px;
-}
-
-.row {
-    float: left;
+    font-size: 15px;
+    width: 178px;
 }
