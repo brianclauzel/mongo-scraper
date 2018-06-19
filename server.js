@@ -29,14 +29,13 @@ app.get("/", function(req, res) {
 });
 
 app.get("/scrape", function(req, res) {
-    res.render("home");
     request("https://www.newyorktimes.com/", function(error, response, body) {
 
 
         var $ = cheerio.load(body);
 
         $("article h2").each(function(i, element) {
-            
+
             var result = {};
 
             result.title = $(this)
@@ -54,11 +53,13 @@ app.get("/scrape", function(req, res) {
 
             results.push(result);
 
-            
+
         });
-            db.Article.collection.insert(results).then(function(dbArticle){
-                // console.log(dbArticle);
-            }).catch(function(err) {
+            db.Article.collection.insert(results)
+            .then((dbArticle) => {
+                res.render("home");
+            })
+            .catch((err) => {
                 return res.json(err);
             });
     });
@@ -77,7 +78,7 @@ app.get("/articles", function(req, res) {
         res.json(err);
       });
   });
-  
+
   // Route for grabbing a specific Article by id, populate it with it's note
   app.get("/articles/:id", function(req, res) {
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
@@ -93,7 +94,7 @@ app.get("/articles", function(req, res) {
         res.json(err);
       });
   });
-  
+
   // Route for saving/updating an Article's associated Note
   app.post("/articles/:id", function(req, res) {
     // Create a new note and pass the req.body to the entry
@@ -158,7 +159,7 @@ app.get("/articles", function(req, res) {
 //         res.json(err);
 //       });
 //   });
-  
+
 //   // Route for saving/updating an Article's associated Note
 //   app.post("/articles/:id", function(req, res) {
 //     // Create a new note and pass the req.body to the entry
